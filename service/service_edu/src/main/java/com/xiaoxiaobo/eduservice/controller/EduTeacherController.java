@@ -26,6 +26,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/eduservice/teacher/")
 @Slf4j
+@CrossOrigin//解决跨域
 public class EduTeacherController {
     //访问地址： http://localhost:8001/eduservice/teacher/findAll
     //把service注入
@@ -94,7 +95,7 @@ public class EduTeacherController {
         long total = pageTeacher.getTotal();//总记录数
         List<EduTeacher> recods = pageTeacher.getRecords();//数据lise集合
 
-        return R.ok().data("total", teacherquery).data("rows", recods);
+        return R.ok().data("total", total).data("rows", recods);
     }
 }
 
