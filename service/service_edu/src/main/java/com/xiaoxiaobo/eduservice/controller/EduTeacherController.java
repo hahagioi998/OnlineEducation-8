@@ -97,6 +97,32 @@ public class EduTeacherController {
 
         return R.ok().data("total", total).data("rows", recods);
     }
+    //根据id搜索
+    @GetMapping("find/{id}")
+    public R getTeacher(@PathVariable String id){
+        EduTeacher eduTeacher=teacherService.getById(id);
+        return R.ok().data("teacher",eduTeacher);
+    }
+    //修改单挑
+    @PostMapping("updateTeacher")
+    public R updateTeacher(@RequestBody EduTeacher eduTeacher){
+        boolean flag=teacherService.updateById(eduTeacher);
+        if(flag){
+            return R.ok();
+        }else {
+            return R.error();
+        }
+    }
+    //增加讲师
+    @PostMapping("addTeacher")
+    public R addTeacher(@RequestBody EduTeacher eduTeacher){
+        boolean save=teacherService.save(eduTeacher);
+        if(save){
+            return R.ok();
+        }else {
+            return R.error();
+        }
+    }
 }
 
 
