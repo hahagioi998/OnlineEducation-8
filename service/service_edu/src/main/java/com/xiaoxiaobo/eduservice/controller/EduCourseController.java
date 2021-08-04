@@ -2,9 +2,12 @@ package com.xiaoxiaobo.eduservice.controller;
 
 
 import com.xiaoxiaobo.common_util.R;
+import com.xiaoxiaobo.eduservice.entity.EduCourse;
 import com.xiaoxiaobo.eduservice.entity.vo.CourseInfoVo;
+import com.xiaoxiaobo.eduservice.entity.vo.CoursePublishVo;
 import com.xiaoxiaobo.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-08-02
  */
 @RestController
+@Controller
 @RequestMapping("/eduservice/edu_course")
 @CrossOrigin//解决跨域
 public class EduCourseController {
@@ -42,5 +46,21 @@ public class EduCourseController {
         boolean result = eduCourseService.updateCourseInfo(courseInfoVo);
         return R.ok().data("result",result);
     }
+    //查询课程以及相关信息
+    @GetMapping("getCouse/{courseId}")
+    public R getCouse(@PathVariable String courseId){
+        CoursePublishVo coursePublishVo=eduCourseService.getCouse(courseId);
+        return R.ok().data("coursePublishVo",coursePublishVo);
+    }
+    //课程最后发布
+    @GetMapping("publishCourse/{courseId}")
+    public  R publishCourse(@PathVariable String courseId){
+        EduCourse eduCourse=new EduCourse();
+        eduCourse.setId(courseId);
+        eduCourse.setStatus("Normal");
+        eduCourseService.updateById(eduCourse);
+        return R.ok();
+    }
+
 }
 

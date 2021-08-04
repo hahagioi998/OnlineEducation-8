@@ -7,6 +7,7 @@ import com.xiaoxiaobo.eduservice.entity.EduCourse;
 import com.xiaoxiaobo.eduservice.entity.EduCourseDescription;
 import com.xiaoxiaobo.eduservice.entity.chapter.ChapyerVo;
 import com.xiaoxiaobo.eduservice.entity.vo.CourseInfoVo;
+import com.xiaoxiaobo.eduservice.entity.vo.CoursePublishVo;
 import com.xiaoxiaobo.eduservice.mapper.EduCourseMapper;
 import com.xiaoxiaobo.eduservice.service.EduCourseDescriptionService;
 import com.xiaoxiaobo.eduservice.service.EduCourseService;
@@ -70,6 +71,14 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         boolean returns=courseDescriptionService.updateById(eduCourseDescription);
         return returns;
     }
+
+    @Override
+    public CoursePublishVo getCouse(String courseId) {
+        CoursePublishVo coursePublishVo= baseMapper.selectCoursePublishVoById(courseId);
+        return coursePublishVo;
+    }
+
+
 
 
 }

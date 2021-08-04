@@ -2,6 +2,7 @@ package com.xiaoxiaobo.eduservice.mapper;
 
 import com.xiaoxiaobo.eduservice.entity.EduVideo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
