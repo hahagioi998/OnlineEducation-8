@@ -5,9 +5,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.xiaoxiaobo.eduservice.entity.chapter.ChapyerVo;
 import com.xiaoxiaobo.eduservice.entity.vo.CourseInfoVo;
 import com.xiaoxiaobo.eduservice.entity.vo.CoursePublishVo;
+import com.xiaoxiaobo.eduservice.entity.vo.CourseVo;
+import com.xiaoxiaobo.eduservice.entity.vo.ReturnCourseVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -29,4 +32,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     CoursePublishVo getCouse(String courseId);
 
+    Map<String,Object> getAllController(long current, long limit, CourseVo courseVo);
+
+    void removeCourse(String id);
 }
