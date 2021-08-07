@@ -1,13 +1,15 @@
 package com.xiaoxiaobo.vodtest;
 
 import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.vod.model.v20170321.*;
+import com.xiaoxiaobo.vod.utIl.InitObject;
 
 
 import java.util.List;
 
 public class TestVod {
-//    public static void main(String[] args) throws Exception{
+    //    public static void main(String[] args) throws Exception{
 //        DefaultAcsClient client=InitObject.initVodClient("LTAI5tPrAaqa8MbNn8xdZxvP","KltJkhI9FFCXeFVQhqVjU7tHCTdPMC");
 //        GetPlayInfoRequest request=new GetPlayInfoRequest();
 //        GetPlayInfoResponse response=new GetPlayInfoResponse();
@@ -22,12 +24,12 @@ public class TestVod {
 //        System.out.print("VideoBase.Title = " + response.getVideoBase().getTitle() + "\n");
 //
 //    }
-    public  static void getPlayUrl()throws Exception{
-        DefaultAcsClient client=InitObject.initVodClient("LTAI5tPrAaqa8MbNn8xdZxvP","KltJkhI9FFCXeFVQhqVjU7tHCTdPMC");
-        GetPlayInfoRequest request=new GetPlayInfoRequest();
-        GetPlayInfoResponse response=new GetPlayInfoResponse();
+    public static void getPlayUrl() throws Exception {
+        DefaultAcsClient client = InitObject.initVodClient("LTAI5tPrAaqa8MbNn8xdZxvP", "KltJkhI9FFCXeFVQhqVjU7tHCTdPMC");
+        GetPlayInfoRequest request = new GetPlayInfoRequest();
+        GetPlayInfoResponse response = new GetPlayInfoResponse();
         request.setVideoId("cb6de918d8e54b51b7c6c41a1a838bc5");
-        response=client.getAcsResponse(request);
+        response = client.getAcsResponse(request);
         List<GetPlayInfoResponse.PlayInfo> playInfoList = response.getPlayInfoList();
         //播放地址
         for (GetPlayInfoResponse.PlayInfo playInfo : playInfoList) {
@@ -38,12 +40,16 @@ public class TestVod {
 
     }
 
-    public static void main(String[] args) throws Exception{
-        DefaultAcsClient client=InitObject.initVodClient("LTAI5tPrAaqa8MbNn8xdZxvP","KltJkhI9FFCXeFVQhqVjU7tHCTdPMC");
-        GetVideoPlayAuthRequest request=new GetVideoPlayAuthRequest();
-        GetVideoPlayAuthResponse response=new GetVideoPlayAuthResponse();
+    public void getPlayAuth() throws ClientException {
+        DefaultAcsClient client = InitObject.initVodClient("LTAI5tPrAaqa8MbNn8xdZxvP", "KltJkhI9FFCXeFVQhqVjU7tHCTdPMC");
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
         request.setVideoId("cb6de918d8e54b51b7c6c41a1a838bc5");
-        response=client.getAcsResponse(request);
-        System.out.println("PINGZHENG:"+response.getPlayAuth());
+        response = client.getAcsResponse(request);
+        System.out.println("PINGZHENG:" + response.getPlayAuth());
+    }
+
+    public static void main(String[] args) throws Exception {
+
     }
 }

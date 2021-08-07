@@ -1,4 +1,4 @@
-package com.xiaoxiaobo.vodtest;
+package com.xiaoxiaobo.vod.utIl;
 
 import com.aliyun.oss.ClientException;
 import com.aliyuncs.DefaultAcsClient;
